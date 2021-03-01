@@ -18,10 +18,28 @@ public class Java8ExamplesApplication {
 		System.out.println("Example 2:");
 		example2();
 		
+		
+		System.out.println();
+		System.out.println("Example 3:");
+		example3();
+		
+		System.out.println();
+		System.out.println("Example 4:");
+		example4();
+		
+		System.out.println();
+		System.out.println("Example 5:");
+		example5();
+		
+		System.out.println();
+		System.out.println("Example 6:");
+		example6();
+		
 		System.out.println();
 		System.out.println("******** Aplicação Finalizada. ********");
 	}
 
+	//Example1
 	private static void example1() {
 		//Implementação da classe anonima Runnable
 		Runnable r1 = new Runnable() {
@@ -43,10 +61,12 @@ public class Java8ExamplesApplication {
 		r2.run();
 	}
 	
+	//Example2 - Interface Funcional 1
 	interface Num {
 		double getValue();
 	}
 	
+	//Expressao lambda utilizada como uma constante	
 	private static void example2() {
 		
 		Num n;
@@ -54,4 +74,49 @@ public class Java8ExamplesApplication {
 		System.out.println(n.getValue());
 	}
 	
-}
+	//Example3
+	//Expressão lambda com classe Math 
+	private static void example3() {
+		
+		Num n2 = () -> Math.random() * 100;
+		System.out.println(n2.getValue());
+		System.out.println(n2.getValue());
+	}
+	
+	//Example4 - Interface Funcional 2
+	interface ValorNumerico {
+		boolean teste(int n);
+	}
+	
+	//Expressão lambda com passagem de um Parametro para Interface Funcional
+	private static void example4() {
+		
+		ValorNumerico isPar = (int n) -> (n % 2)==0;
+		System.out.println(isPar.teste(10));
+		System.out.println(isPar.teste(7));
+	}
+	
+	
+	//Example5 - Interface Funcional 3
+	interface ValorNumerico2 {
+		boolean teste(int n, int n2);
+	}
+	
+	//Expressão lambda com passagem de dois Parametros para Interface Funcional
+	private static void example5() {
+		
+		ValorNumerico2 isDiv = (x, y) -> (x%y)==0; // Caso declare o tipo em um dos parametros, deve-se definir tipos de ambos
+		System.out.println(isDiv.teste(10, 5));
+		System.out.println(isDiv.teste(12, 9));
+	}
+	
+	//Expressão lambda com Corpo da Expressão Lambda
+	private static void example6() {
+		
+		ValorNumerico2 expressao = (x, y) -> {
+			return x + y > 1000;
+		} ;
+		System.out.println(expressao.teste(10, 100));
+		System.out.println(expressao.teste(10, 1000));
+	}
+}	
