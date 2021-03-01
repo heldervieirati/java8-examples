@@ -1,5 +1,8 @@
 package br.com.java8.examples;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -34,6 +37,10 @@ public class Java8ExamplesApplication {
 		System.out.println();
 		System.out.println("Example 6:");
 		example6();
+		
+		System.out.println();
+		System.out.println("Example 7:");
+		example7();
 		
 		System.out.println();
 		System.out.println("******** Aplicação Finalizada. ********");
@@ -113,10 +120,28 @@ public class Java8ExamplesApplication {
 	//Expressão lambda com Corpo da Expressão Lambda
 	private static void example6() {
 		
-		ValorNumerico2 expressao = (x, y) -> {
+		ValorNumerico2 expressao = (x, y) -> { // Quando aberto chaves, eh obrigatorio o uso do return
 			return x + y > 1000;
 		} ;
 		System.out.println(expressao.teste(10, 100));
 		System.out.println(expressao.teste(10, 1000));
+	}
+	
+	//Stream na Pratica
+	private static void example7() {
+		
+		//Antes do Java8
+		List<String> lista1 = Arrays.asList(
+						"Santa Catarina", 
+						"Parana", 
+						"Sao Paulo", 
+						"Rio de Janeiro", 
+						"Brasilia", 
+						"Ceara");
+		//for (String s : lista1) 
+			//System.out.println(s);
+		//lista1.forEach(x -> System.out.println(x));		
+		lista1.forEach(System.out::println); 			// Referencia de Metodo
+		
 	}
 }	
